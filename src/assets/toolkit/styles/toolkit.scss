@@ -1,6 +1,7 @@
-/**
- * Toolkit styles
- */
+@import "helpers/variables.scss";
+@import "helpers/mixins.scss";
+@import "elements/typography.scss";
+@import "components/header.scss";
 
 body {
   font-family: sans-serif;
