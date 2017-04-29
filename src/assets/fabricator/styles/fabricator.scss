@@ -10,6 +10,10 @@ $settings: (
 	menu-width: 14rem
 );
 
+html {
+	font-size: 100% !important;
+}
+
 @import 'partials/variables';
 @import 'partials/code';
 @import 'partials/color-chips';

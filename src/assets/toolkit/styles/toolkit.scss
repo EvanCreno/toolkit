@@ -1,7 +1,9 @@
-@import "helpers/variables.scss";
-@import "helpers/mixins.scss";
-@import "elements/typography.scss";
-@import "components/header.scss";
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap";
+@import "helpers/variables";
+@import "helpers/mixins";
+@import "elements/buttons";
+@import "elements/typography";
+@import "components/header";
 
 body {
   font-family: sans-serif;
