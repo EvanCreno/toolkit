@@ -1,6 +1,6 @@
 {
     "name": "nextcloud-toolkit",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Nextcloud UI components",
     "license": "AGPL",
     "homepage": "https://github.com/nextcloud/toolkit",
