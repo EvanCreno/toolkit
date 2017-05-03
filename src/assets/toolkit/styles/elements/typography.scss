@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+html {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans",Frutiger,Calibri,"Myriad Pro",Myriad,sans-serif;
+}
+
 h1 {
     font-size: 60px;
     line-height: 120%;
@@ -13,22 +24,22 @@ h2 {
 }
 
 h3 {
-  font-size: 22px;
-  font-weight: 300;
-  line-height: 1.5;
-  color: #555;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1.5;
+    color: #555;
 }
 
 h4 {
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 1.36;
-  color: #555;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.36;
+    color: #555;
 }
 
 h5 {
-  font-size: 17px;
-  font-weight: bold;
-  line-height: 1.5;
-  color: #555;
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 1.5;
+    color: #555;
 }

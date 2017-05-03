@@ -110,7 +110,7 @@
 	var enquire = __webpack_require__(8);
 	var bodymovin = __webpack_require__(4);
 	var Headroom = __webpack_require__(9);
-	var headroomJquery = __webpack_require__(10);
+	__webpack_require__(10);
 	
 	var HeaderApp = {
 	  init: function init() {

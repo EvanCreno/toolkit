@@ -1,9 +1,15 @@
-Reusable Nextcloud frontend components 
+Reusable Nextcloud frontend components
+
+Add to your code as a npm dependencie
+
+```
+npm i nextcloud-toolkit --save-dev
+```
+
 
 ## Quick Start
 
 ```shell
-$ curl -L https://github.com/fbrctr/fabricator/archive/master.tar.gz | tar zx --strip 1
 $ npm start
 ```
 

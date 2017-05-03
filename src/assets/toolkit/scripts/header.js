@@ -3,7 +3,7 @@ const _ = require('underscore');
 const enquire = require('enquire.js');
 const bodymovin = require('bodymovin');
 const Headroom = require('headroom.js');
-const headroomJquery = require('headroom.js/dist/jQuery.headroom.js');
+require('headroom.js/dist/jQuery.headroom.js');
 
 const HeaderApp = {
   init() {
@@ -85,7 +85,8 @@ const HeaderApp = {
     }
 
     $(this.variables.linksSelector).slideUp().removeClass(this.variables.activeClass);
-    $(event.currentTarget).find(this.variables.linksSelector).slideToggle().addClass(this.variables.activeClass);
+    $(event.currentTarget).find(this.variables.linksSelector).slideToggle()
+      .addClass(this.variables.activeClass);
   },
 
   mobileBgAnimation() {
