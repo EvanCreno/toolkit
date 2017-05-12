@@ -112,10 +112,35 @@
 	var Headroom = __webpack_require__(9);
 	__webpack_require__(10);
 	
+	var selectors = {
+	  toggleSelector: '#toggle',
+	  navigationId: '#nav',
+	  navigationSelector: '.nav',
+	  subMenuSelector: '#menuAnchor',
+	  sectionsSelector: '.nav__sections',
+	  sectionsContainerSelector: '.nav__sections-wrapper',
+	  sectionSelector: '.nav__section',
+	  navBackgroundSelector: '.nav__bg',
+	  navBackgroundWrapper: '.nav__bg-wrapper',
+	  rightNavigationSelector: '.right-buttons',
+	  linksSelector: '.nav__links',
+	  logoSelector: '.logo',
+	  mobileClass: 'mobile',
+	  activeClass: 'active',
+	  scrolledClass: 'scrolled',
+	  backgroundAnimationClass: 'is-animatable',
+	  linksVisibleClass: 'is-visible',
+	  mobileBackgroundSelector: '.mobile-bg',
+	  mobileMenuClass: 'menu-open',
+	  showNavigationClass: 'nav-down',
+	  hideNavigationClass: 'nav-up',
+	  playOnHoverClass: 'hoverPlay',
+	  stopAnimationClass: 'stopedAnimation',
+	  mobileBackgroundContainerSelector: '.mobile-bg-container'
+	};
+	
 	var HeaderApp = {
 	  init: function init() {
-	
-	    this.didScroll = false;
 	    this.menuOpened = false;
 	    this.enquireInitializedMobile = false;
 	
@@ -133,77 +158,48 @@
 	      match: _.bind(this.desktopDropdownEvent, this)
 	    });
 	  },
-	
-	
-	  variables: {
-	    toggleSelector: '#toggle',
-	    navigationId: '#nav',
-	    navigationSelector: '.nav',
-	    subMenuSelector: '#menuAnchor',
-	    sectionsSelector: '.nav__sections',
-	    sectionsContainerSelector: '.nav__sections-wrapper',
-	    sectionSelector: '.nav__section',
-	    navBackgroundSelector: '.nav__bg',
-	    navBackgroundWrapper: '.nav__bg-wrapper',
-	    rightNavigationSelector: '.right-buttons',
-	    linksSelector: '.nav__links',
-	    logoSelector: '.logo',
-	    mobileClass: 'mobile',
-	    activeClass: 'active',
-	    scrolledClass: 'scrolled',
-	    backgroundAnimationClass: 'is-animatable',
-	    linksVisibleClass: 'is-visible',
-	    mobileBackgroundSelector: '.mobile-bg',
-	    mobileMenuClass: 'menu-open',
-	    showNavigationClass: 'nav-down',
-	    hideNavigationClass: 'nav-up',
-	    playOnHoverClass: 'hoverPlay',
-	    stopAnimationClass: 'stopedAnimation',
-	    mobileBackgroundContainerSelector: '.mobile-bg-container'
-	  },
-	
 	  toggleMobileMenu: function toggleMobileMenu(event) {
-	    $(this.variables.linksSelector).hide().removeClass(this.variables.activeClass); // hide all submenus without animation
-	    $(event.currentTarget).toggleClass(this.variables.activeClass);
-	    $(this.variables.mobileBackgroundSelector).toggleClass(this.variables.activeClass);
-	    $(this.variables.sectionsSelector).toggleClass(this.variables.activeClass);
-	    $(this.variables.rightNavigationSelector).toggleClass(this.variables.activeClass);
-	    $(this.variables.logoSelector).toggleClass(this.variables.mobileMenuClass);
-	    $(this.variables.mobileBackgroundContainerSelector).toggleClass(this.variables.backgroundAnimationClass);
+	    $(selectors.linksSelector).hide().removeClass(selectors.activeClass); // hide all submenus without animation
+	    $(event.currentTarget).toggleClass(selectors.activeClass);
+	    $(selectors.mobileBackgroundSelector).toggleClass(selectors.activeClass);
+	    $(selectors.sectionsSelector).toggleClass(selectors.activeClass);
+	    $(selectors.rightNavigationSelector).toggleClass(selectors.activeClass);
+	    $(selectors.logoSelector).toggleClass(selectors.mobileMenuClass);
+	    $(selectors.mobileBackgroundContainerSelector).toggleClass(selectors.backgroundAnimationClass);
 	  },
 	  resetMobile: function resetMobile() {
-	    $(this.variables.navigationId).removeClass(this.variables.mobileClass);
-	    $(this.variables.toggleSelector).off('click');
-	    $(this.variables.sectionSelector).off('click');
-	    $(this.variables.linksSelector).css('display', 'inherit').removeClass(this.variables.activeClass);
+	    $(selectors.navigationId).removeClass(selectors.mobileClass);
+	    $(selectors.toggleSelector).off('click');
+	    $(selectors.sectionSelector).off('click');
+	    $(selectors.linksSelector).css('display', 'inherit').removeClass(selectors.activeClass);
 	  },
 	  resetDesktop: function resetDesktop() {
-	    $(this.variables.sectionSelector).off('mouseover');
-	    $(this.variables.sectionSelector).off('mouseleave');
-	    $(this.variables.linksSelector).hide();
+	    $(selectors.sectionSelector).off('mouseover');
+	    $(selectors.sectionSelector).off('mouseleave');
+	    $(selectors.linksSelector).hide();
 	  },
 	  showSubMenu: function showSubMenu(event) {
-	    if ($(event.currentTarget).find(this.variables.linksSelector).hasClass(this.variables.activeClass)) {
-	      $(this.variables.linksSelector).slideUp().removeClass(this.variables.activeClass);
+	    if ($(event.currentTarget).find(selectors.linksSelector).hasClass(selectors.activeClass)) {
+	      $(selectors.linksSelector).slideUp().removeClass(selectors.activeClass);
 	
 	      return;
 	    }
 	
-	    $(this.variables.linksSelector).slideUp().removeClass(this.variables.activeClass);
-	    $(event.currentTarget).find(this.variables.linksSelector).slideToggle().addClass(this.variables.activeClass);
+	    $(selectors.linksSelector).slideUp().removeClass(selectors.activeClass);
+	    $(event.currentTarget).find(selectors.linksSelector).slideToggle().addClass(selectors.activeClass);
 	  },
 	  mobileBgAnimation: function mobileBgAnimation() {
 	    var windowDiameter = $(window).width() * 2 * $(window).height() * 2,
 	        returnBiggest = Math.sqrt(windowDiameter) * 1.5;
 	
-	    $(this.variables.mobileBackgroundSelector).css({
+	    $(selectors.mobileBackgroundSelector).css({
 	      'top': -returnBiggest / 2 + 'px',
 	      'right': -returnBiggest / 2 + 'px',
 	      'width': returnBiggest + 'px',
 	      'height': returnBiggest + 'px'
 	    });
 	  },
-	  showAndHideHeader: function showAndHideHeader(variables) {
+	  showAndHideHeader: function showAndHideHeader() {
 	
 	    var myElement = document.querySelector('.nav');
 	
@@ -215,7 +211,7 @@
 	        down: 20
 	      },
 	
-	      onTop: function onTop(variables) {
+	      onTop: function onTop() {
 	        $('#nav').removeClass('scrolled');
 	        $('.logo').removeClass('scrolled');
 	        $('.mobile-bg-container').addClass('visible');
@@ -243,27 +239,27 @@
 	    }
 	    $(window).on('resize', _.bind(this.mobileBgAnimation, this));
 	    this.mobileBgAnimation();
-	    $(this.variables.navigationId).addClass(this.variables.mobileClass);
-	    $(this.variables.toggleSelector).click(_.bind(this.toggleMobileMenu, this));
-	    $(this.variables.sectionSelector).click(_.bind(this.showSubMenu, this));
+	    $(selectors.navigationId).addClass(selectors.mobileClass);
+	    $(selectors.toggleSelector).click(_.bind(this.toggleMobileMenu, this));
+	    $(selectors.sectionSelector).click(_.bind(this.showSubMenu, this));
 	  },
 	  setBackgroundDropdown: function setBackgroundDropdown(bg) {
-	    bg.addClass(this.variables.backgroundAnimationClass);
+	    bg.addClass(selectors.backgroundAnimationClass);
 	  },
 	  backgroundDropdown: function backgroundDropdown(event) {
 	    var cssPadding = 30,
-	        bg = $(this.variables.navBackgroundSelector),
-	        bgWrapper = $(this.variables.navBackgroundWrapper),
-	        selectedDropdown = $(event.currentTarget).find(this.variables.linksSelector),
+	        bg = $(selectors.navBackgroundSelector),
+	        bgWrapper = $(selectors.navBackgroundWrapper),
+	        selectedDropdown = $(event.currentTarget).find(selectors.linksSelector),
 	        height = selectedDropdown.innerHeight(),
 	        width = selectedDropdown.innerWidth(),
-	        windowWidth = $(this.variables.navigationSelector).outerWidth(),
+	        windowWidth = $(selectors.navigationSelector).outerWidth(),
 	        navigationWidth = $('.nav .container').outerWidth(),
 	        marginNavigation = (windowWidth - navigationWidth) / 2,
 	        backgroundDropdownPosition = $(event.currentTarget).offset().left + cssPadding + ($(event.currentTarget).innerWidth() - cssPadding) / 2 - width / 2 - marginNavigation;
 	
 	    setTimeout(_.bind(this.setBackgroundDropdown, this, bg));
-	    bgWrapper.addClass(this.variables.linksVisibleClass);
+	    bgWrapper.addClass(selectors.linksVisibleClass);
 	
 	    bg.css({
 	      '-moz-transform': 'translateX(' + backgroundDropdownPosition + 'px)',
@@ -277,23 +273,23 @@
 	  },
 	  desktopDropdownEvent: function desktopDropdownEvent() {
 	    this.resetMobile();
-	    $(this.variables.sectionSelector).on('mouseover', _.bind(this.backgroundDropdown, this));
-	    $(this.variables.sectionSelector).on('mouseleave', _.bind(this.destroyDropdown, this));
+	    $(selectors.sectionSelector).on('mouseover', _.bind(this.backgroundDropdown, this));
+	    $(selectors.sectionSelector).on('mouseleave', _.bind(this.destroyDropdown, this));
 	    this.showAndHideHeader();
 	  },
 	
 	
 	  // Clear dropdowns in mouse leave
 	  destroyDropdown: function destroyDropdown(event) {
-	    var bg = $(this.variables.navBackgroundSelector),
-	        bgWrapper = $(this.variables.navBackgroundWrapper);
+	    var bg = $(selectors.navBackgroundSelector),
+	        bgWrapper = $(selectors.navBackgroundWrapper);
 	
 	    setTimeout(_.bind(function () {
-	      bg.removeClass(this.variables.backgroundAnimationClass);
+	      bg.removeClass(selectors.backgroundAnimationClass);
 	    }, this));
 	
-	    var bgWrapper = $(this.variables.navBackgroundWrapper);
-	    bgWrapper.removeClass(this.variables.linksVisibleClass);
+	    var bgWrapper = $(selectors.navBackgroundWrapper);
+	    bgWrapper.removeClass(selectors.linksVisibleClass);
 	  },
 	
 	
@@ -329,30 +325,30 @@
 	    var bodyScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
 	
 	    if (bodyScrollTop !== 0) {
-	      $(this.variables.navigationId).addClass(this.variables.scrolledClass);
-	      $(this.variables.logoSelector).addClass(this.variables.scrolledClass);
+	      $(selectors.navigationId).addClass(selectors.scrolledClass);
+	      $(selectors.logoSelector).addClass(selectors.scrolledClass);
 	    } else {
-	      $(this.variables.navigationId).removeClass(this.variables.scrolledClass);
-	      $(this.variables.logoSelector).removeClass(this.variables.scrolledClass);
+	      $(selectors.navigationId).removeClass(selectors.scrolledClass);
+	      $(selectors.logoSelector).removeClass(selectors.scrolledClass);
 	    }
 	  },
 	  checkScroll: function checkScroll() {
-	    if ($(this.variables.navigationId).length > 0) {
+	    if ($(selectors.navigationId).length > 0) {
 	      $(window).on('scroll load resize', _.bind(this.toggleScrolledClass, this));
 	    }
 	  },
 	  animatedLogoSprite: function animatedLogoSprite() {
 	    this.hoverLogo();
-	    $(this.variables.logoSelector).on('mouseover', _.bind(this.hoverLogo, this));
+	    $(selectors.logoSelector).on('mouseover', _.bind(this.hoverLogo, this));
 	  },
 	  hoverLogo: function hoverLogo() {
-	    $(this.variables.logoSelector).removeClass(this.variables.stopAnimationClass);
-	    $(this.variables.logoSelector).addClass(this.variables.playOnHoverClass);
+	    $(selectors.logoSelector).removeClass(selectors.stopAnimationClass);
+	    $(selectors.logoSelector).addClass(selectors.playOnHoverClass);
 	    setTimeout(_.bind(this.stopLogoAnimation, this), 2000);
 	  },
 	  stopLogoAnimation: function stopLogoAnimation() {
-	    $(this.variables.logoSelector).removeClass(this.variables.playOnHoverClass);
-	    $(this.variables.logoSelector).addClass(this.variables.stopAnimationClass);
+	    $(selectors.logoSelector).removeClass(selectors.playOnHoverClass);
+	    $(selectors.logoSelector).addClass(selectors.stopAnimationClass);
 	  }
 	};
 	
